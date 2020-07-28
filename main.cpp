@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     {
         requestedUrls << QUrl::fromLocalFile(argument);
     }
-    requestedUrls << QUrl(QLatin1String("file:"));
+    requestedUrls.prepend(QUrl(QLatin1String("file:")));
     stream << "INFO: requested urls: " << QUrl::toStringList(requestedUrls).join(" ") << endl;
 
 
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         stream << "INFO: Old keys: " << QUrl::toStringList(sidebarUrls).join(" ") << endl;
         foreach (QUrl requestedUrl, requestedUrls) {
             if ( ! sidebarUrls.contains(requestedUrl)) {
-                sidebarUrls << requestedUrls;
+                sidebarUrls << requestedUrl;
             }
         }
         settings.setValue(QLatin1String("shortcuts"), QUrl::toStringList(sidebarUrls));
@@ -65,5 +65,5 @@ int main(int argc, char *argv[])
 
     stream << "INFO: success!" << endl;
 
-    return a.exec();
+    return 0;
 }
