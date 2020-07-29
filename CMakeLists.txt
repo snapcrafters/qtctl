@@ -17,3 +17,6 @@ add_executable(qtctl
   main.cpp
 )
 target_link_libraries(qtctl Qt5::Core)
+install(TARGETS qtctl
+  DESTINATION bin
+)

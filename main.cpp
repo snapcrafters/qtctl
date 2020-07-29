@@ -51,7 +51,9 @@ int main(int argc, char *argv[])
     if (!settings.contains(QLatin1String("sidebarWidth"))){
         settings.setValue(QLatin1String("sidebarWidth"), 98);
     }
-
+    if (!settings.contains(QLatin1String("viewMode"))){
+        settings.setValue(QLatin1String("viewMode"), QLatin1String("Detail"));
+    }
 
     if (!settings.contains(QLatin1String("shortcuts"))){
         stream << "INFO: shortcuts key doesn't exist" << endl;
