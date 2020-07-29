@@ -12,6 +12,11 @@ int main(int argc, char *argv[])
 
     QStringList arguments = a.arguments();
     arguments.removeFirst();
+    if (arguments.length()< 1){
+        stream << "ERROR: `ensure-shortcuts` is the only supported action." << endl;
+        stream << "Usage: `qtctl ensure-shortcuts <path1>.." << endl;
+        return 1;
+    }
     if (*arguments.begin() != QLatin1String("ensure-shortcuts")) {
         stream << "Requested action: " << *arguments.begin() << endl;
         stream << "ERROR: `ensure-shortcuts` is the only supported action." << endl;
